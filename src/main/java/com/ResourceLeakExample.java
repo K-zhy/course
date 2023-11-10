@@ -17,9 +17,19 @@ public class ResourceLeakExample {
            }
        } catch (IOException e) {
            e.printStackTrace();
+       } finally {
+           try {
+               if (reader != null) {
+                   reader.close();
+               }
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
        }
        // Resource leak: 'reader' is never closed on normal or exceptional execution paths
    }
+}
+
     
     
 //    public static void main(String[] args) {
